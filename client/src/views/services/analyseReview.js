@@ -86,7 +86,7 @@ const AnalyseReview = () => {
     //Function to fetch product data from the backend
     const fetchProductData = async () => {
         const currProductData = await axios.get('/analysis/productReviewAnalysisData').then(({ data }) => data);
-        if (productData.length === currProductData.length && productData.length !== 0 ) {
+        if (productData.length === currProductData.length && productData.length !== 0) {
             setIsError(true);
             setIsLoading(false);
         } else {

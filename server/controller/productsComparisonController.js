@@ -100,7 +100,7 @@ exports.productsComparison = (req, res, next) => {
           productTwoData: productsData[1],
         };
         // console.log(comparedData);
-        ProductsComparison.create(comparedData, (err, data) => {
+        ProductsComparison.create().then(comparedData, (err, data) => {
           if (err) {
             console.log(err + "Error Inserting Data");
           } else {
@@ -195,7 +195,7 @@ exports.productsComparison = (req, res, next) => {
           productOneData: productsData[0],
           productTwoData: productsData[1],
         };
-        ProductsComparison.create(comparedData, (err, data) => {
+        ProductsComparison.create().then(comparedData, (err, data) => {
           if (err) {
             console.log(err + "Error Inserting Data");
           } else {
@@ -211,7 +211,7 @@ exports.productsComparison = (req, res, next) => {
 };
 
 exports.productsComparedData = (req, res, next) => {
-  ProductsComparison.find((err, comparedData) => {
+  ProductsComparison.find().then((err, comparedData) => {
     if (err) {
       res.json(err);
     } else {

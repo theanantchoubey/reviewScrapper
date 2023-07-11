@@ -2,7 +2,7 @@
     "name": "berry-material-react-free",
     "version": "3.2.0",
     "private": false,
-    "proxy": "http://localhost:5000",
+    "proxy": "https://reviewscrapper-kklq.onrender.com",
     "dependencies": {
         "@emotion/cache": "^11.9.3",
         "@emotion/react": "^11.9.3",
@@ -16,6 +16,7 @@
         "@tabler/icons": "^1.72.0",
         "apexcharts": "^3.35.3",
         "axios": "^1.2.0",
+        "caniuse-lite": "^1.0.30001514",
         "formik": "^2.2.9",
         "framer-motion": "^6.3.16",
         "material-ui-popup-state": "^4.0.1",

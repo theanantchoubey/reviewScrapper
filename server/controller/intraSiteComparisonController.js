@@ -97,7 +97,7 @@ exports.intraSiteProductsComparison = (req, res, next) => {
           flipkartProductData: productsData[1],
         };
 
-        IntraSiteProductsComparison.create(comparedData, (err, data) => {
+        IntraSiteProductsComparison.create().then(comparedData, (err, data) => {
           if (err) {
             console.log(err + "Error Inserting Data");
           } else {
@@ -112,7 +112,7 @@ exports.intraSiteProductsComparison = (req, res, next) => {
 };
 
 exports.intraSiteProductsComparedData = (req, res, next) => {
-  IntraSiteProductsComparison.find((err, comparedData) => {
+  IntraSiteProductsComparison.find().then((err, comparedData) => {
     if (err) {
       res.json(err);
     } else {

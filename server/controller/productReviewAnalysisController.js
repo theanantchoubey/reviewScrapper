@@ -46,7 +46,7 @@ exports.productReviewAnalysis = (req, res, next) => {
         productReviews: productReviews,
         productImg: productImage.attr().src,
       };
-      ProductReviewAnalysis.create(productData, (err, data) => {
+      ProductReviewAnalysis.create().then(productData, (err, data) => {
         if (err) {
           console.log(err + "Error Inserting Data");
         } else {
@@ -59,7 +59,7 @@ exports.productReviewAnalysis = (req, res, next) => {
 
 //For Get Request
 exports.productReviewAnalysisData = (req, res, next) => {
-  ProductReviewAnalysis.find((err, analysedData) => {
+  ProductReviewAnalysis.find().then((err, analysedData) => {
     if (err) {
       res.json(err);
     } else {
