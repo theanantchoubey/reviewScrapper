@@ -9,7 +9,7 @@ import RecentIntroCompCard from 'ui-component/cards/RecentIntraCompCard';
 import AmazonLogo from '../../assets/images/logos/amazon_logo.png';
 import FlipkartLogo from '../../assets/images/logos/flipkart_logo.png';
 import { Link } from 'react-router-dom';
-
+import { DATABASE_URL } from './helper';
 const sentiment = new Sentiment();
 
 // ==============================|| ANALYSE REVIEW PAGE ||============================== //
@@ -123,9 +123,11 @@ const CompareAmazonFlipkart = () => {
 
     //Function to fetch products comparison data from the backend
     const fetchProductsData = async () => {
-        const intraSiteProductsComparedData = await axios.get('/intra/intraSiteProductsComparisonData').then(({ data }) => data);
+        const intraSiteProductsComparedData = await axios
+            .get(`${DATABASE_URL}/intra/intraSiteProductsComparisonData`)
+            .then(({ data }) => data);
         // console.log(intraSiteProductsComparedData);
-        if (intraSiteProductsComparison.length === intraSiteProductsComparedData.length && intraSiteProductsComparison.length !== 0) {
+        if (intraSiteProductsComparison.length === intraSiteProductsComparedData.length) {
             setIsError(true);
             setIsLoading(false);
         } else {
@@ -141,7 +143,7 @@ const CompareAmazonFlipkart = () => {
         setTimeout(fetchProductsData, 6000);
         // setTimeout(showLatestComparison, 7000);
         try {
-            await axios.post('/intra/intraSiteProductsComparison', stringifiedProductsURLData, {
+            await axios.post(`${DATABASE_URL}/intra/intraSiteProductsComparison`, stringifiedProductsURLData, {
                 headers: { 'Content-Type': 'application/json' }
             });
         } catch (err) {

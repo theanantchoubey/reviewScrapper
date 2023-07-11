@@ -7,5 +7,5 @@ router.get(
   "/productReviewAnalysisData",
   analysisController.productReviewAnalysisData
 );
-router.get("/intraSiteComparison", analysisController.intraSiteComparison);
+// router.get("/intraSiteComparison", analysisController.intraSiteComparison);
 module.exports = router;

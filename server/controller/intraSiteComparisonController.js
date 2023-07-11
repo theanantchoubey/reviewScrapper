@@ -7,9 +7,6 @@ const IntraSiteProductsComparison = require("../models/intraSiteComparison");
 exports.intraSiteProductsComparison = (req, res, next) => {
   const requestedAmazonProductURL = req.body.amazonProductURL;
   const requestedFlipkartProductURL = req.body.flipkartProductURL;
-  // console.log(
-  //   `productOne: ${requestedAmazonProductURL} && productTwo: ${requestedFlipkartProductURL}.`
-  // );
   if (requestedAmazonProductURL && requestedFlipkartProductURL) {
     const amazonProductCB = (error, respone, html) => {
       handleAmazonProductHTML(html);
@@ -33,7 +30,7 @@ exports.intraSiteProductsComparison = (req, res, next) => {
       let ratings = selTool(".review-rating .a-icon-alt");
       let productReviews = [];
       if (selTool(productTitle).length == 0) {
-        console.log("Wrong link format!")
+        console.log("Wrong link format!");
         return;
       }
       for (let i = 0; i < profileName.length; i++) {
@@ -55,7 +52,6 @@ exports.intraSiteProductsComparison = (req, res, next) => {
         productImg: productImage.attr().src,
       };
       productsData.push(amazonProductData);
-
     };
     const handleFlipkartProductHTML = (html) => {
       let selTool = cheerio.load(html);
@@ -69,7 +65,7 @@ exports.intraSiteProductsComparison = (req, res, next) => {
       let productImage = selTool("._396cs4._2amPTt._3qGmMb");
       let productReviews = [];
       if (selTool(productTitle).length == 0) {
-        console.log("Wrong link format!")
+        console.log("Wrong link format!");
         return;
       }
       for (let i = 0; i < profileName.length; i++) {
@@ -97,13 +93,15 @@ exports.intraSiteProductsComparison = (req, res, next) => {
           flipkartProductData: productsData[1],
         };
 
-        IntraSiteProductsComparison.create().then(comparedData, (err, data) => {
-          if (err) {
-            console.log(err + "Error Inserting Data");
-          } else {
+        IntraSiteProductsComparison.create(comparedData)
+          .then((data) => {
+            res.json(data);
             console.log("IntraSiteData Successfully Inserted");
-          }
-        });
+          })
+          .catch((err) => {
+            res.json(err);
+            console.log("Error Inserting the data!");
+          });
       };
       setTimeout(pushData, 2000);
       // res.json(productsData);

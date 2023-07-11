@@ -25,7 +25,7 @@ import AmazonLogo from '../../assets/images/logos/amazon_logo.png';
 import FlipkartLogo from '../../assets/images/logos/flipkart_logo.png';
 import RecentCompCard from 'ui-component/cards/RecentCompCard';
 import { Link } from 'react-router-dom';
-
+import { DATABASE_URL } from './helper';
 const sentiment = new Sentiment();
 
 // ==============================|| ANALYSE REVIEW PAGE ||============================== //
@@ -140,8 +140,8 @@ const CompareProducts = () => {
 
     //Function to fetch products comparison data from the backend
     const fetchProductsData = async () => {
-        const productsComparedData = await axios.get('/comparison/productsComparisonData').then(({ data }) => data);
-        if (productsComparison.length === productsComparedData.length && productsComparison.length !== 0) {
+        const productsComparedData = await axios.get(`${DATABASE_URL}/comparison/productsComparisonData`).then(({ data }) => data);
+        if (productsComparison.length === productsComparedData.length) {
             setIsError(true);
             setIsLoading(false);
         } else {
@@ -157,7 +157,7 @@ const CompareProducts = () => {
         setTimeout(fetchProductsData, 6000);
         // setTimeout(showLatestComparison, 7000);
         try {
-            await axios.post('/comparison/productsComparison', stringifiedProductsURLData, {
+            await axios.post(`${DATABASE_URL}/comparison/productsComparison`, stringifiedProductsURLData, {
                 headers: { 'Content-Type': 'application/json' }
             });
         } catch (err) {

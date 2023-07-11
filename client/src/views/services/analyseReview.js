@@ -8,7 +8,7 @@ import axios from 'axios';
 import { useEffect } from 'react';
 import RecentAnalysisCard from 'ui-component/cards/RecentAnalysisCard';
 import { Link } from 'react-router-dom';
-
+import { DATABASE_URL } from './helper';
 const sentiment = new Sentiment();
 
 // ==============================|| ANALYSE REVIEW PAGE ||============================== //
@@ -85,8 +85,8 @@ const AnalyseReview = () => {
 
     //Function to fetch product data from the backend
     const fetchProductData = async () => {
-        const currProductData = await axios.get('/analysis/productReviewAnalysisData').then(({ data }) => data);
-        if (productData.length === currProductData.length && productData.length !== 0) {
+        const currProductData = await axios.get(`${DATABASE_URL}/analysis/productReviewAnalysisData`).then(({ data }) => data);
+        if (productData.length === currProductData.length) {
             setIsError(true);
             setIsLoading(false);
         } else {
@@ -101,7 +101,7 @@ const AnalyseReview = () => {
         setTimeout(fetchProductData, 6000);
         // setTimeout(showLatest, 7000);
         try {
-            await axios.post('/analysis/productReviewAnalysis', stringifiedProductURL, {
+            await axios.post(`http://localhost:5000/analysis/productReviewAnalysis`, stringifiedProductURL, {
                 headers: { 'Content-Type': 'application/json' }
             });
         } catch (err) {

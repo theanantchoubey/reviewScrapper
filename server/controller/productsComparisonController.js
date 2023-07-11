@@ -100,12 +100,12 @@ exports.productsComparison = (req, res, next) => {
           productTwoData: productsData[1],
         };
         // console.log(comparedData);
-        ProductsComparison.create().then(comparedData, (err, data) => {
-          if (err) {
-            console.log(err + "Error Inserting Data");
-          } else {
-            console.log("Data Successfully Inserted");
-          }
+        ProductsComparison.create(comparedData).then((err, data) => {
+          res.json(data);
+          console.log("Data Successfully Inserted");
+        }).catch((err) => {
+          res.json(err);
+          console.log("Error inserting the data!");
         });
       };
     }
@@ -195,14 +195,14 @@ exports.productsComparison = (req, res, next) => {
           productOneData: productsData[0],
           productTwoData: productsData[1],
         };
-        ProductsComparison.create().then(comparedData, (err, data) => {
-          if (err) {
-            console.log(err + "Error Inserting Data");
-          } else {
+        ProductsComparison.create(comparedData)
+          .then((data) => {
+            res.json(data);
             console.log("Data Successfully Inserted");
-          }
-        });
-        // res.json(productsData);
+          })
+          .catch((err) => {
+            console.log("Error Inserting the data!");
+          });
       };
     }
   } else {

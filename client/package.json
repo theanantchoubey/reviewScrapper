@@ -2,7 +2,7 @@
     "name": "berry-material-react-free",
     "version": "3.2.0",
     "private": false,
-    "proxy": "https://reviewscrapper-kklq.onrender.com",
+    "proxy": "http://localhost:5000",
     "dependencies": {
         "@emotion/cache": "^11.9.3",
         "@emotion/react": "^11.9.3",
