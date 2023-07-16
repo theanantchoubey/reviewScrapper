@@ -98,10 +98,10 @@ const AnalyseReview = () => {
     //Function to post the form to the backend
     const postURL = async (productURL) => {
         const stringifiedProductURL = JSON.stringify({ productURL: productURL });
-        setTimeout(fetchProductData, 6000);
+        setTimeout(fetchProductData, 7500);
         // setTimeout(showLatest, 7000);
         try {
-            await axios.post(`http://localhost:5000/analysis/productReviewAnalysis`, stringifiedProductURL, {
+            await axios.post(`${DATABASE_URL}/analysis/productReviewAnalysis`, stringifiedProductURL, {
                 headers: { 'Content-Type': 'application/json' }
             });
         } catch (err) {

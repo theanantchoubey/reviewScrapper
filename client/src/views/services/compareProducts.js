@@ -154,7 +154,7 @@ const CompareProducts = () => {
     const postProductsURL = async (productsURLData) => {
         // console.log(productsURLData);
         const stringifiedProductsURLData = JSON.stringify(productsURLData);
-        setTimeout(fetchProductsData, 6000);
+        setTimeout(fetchProductsData, 7500);
         // setTimeout(showLatestComparison, 7000);
         try {
             await axios.post(`${DATABASE_URL}/comparison/productsComparison`, stringifiedProductsURLData, {

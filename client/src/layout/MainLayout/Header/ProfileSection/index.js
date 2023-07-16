@@ -183,7 +183,7 @@ const ProfileSection = () => {
                                                     </ListItemIcon>
                                                     <ListItemText primary={<Typography variant="body2">About</Typography>} />
                                                 </ListItemButton>
-                                                <Link href="https://github.com/theanantchoubey/productScrapping" target="_blank">
+                                                <Link href="https://github.com/theanantchoubey/reviewScrapper" target="_blank">
                                                     <ListItemButton
                                                         sx={{ borderRadius: `${customization.borderRadius}px` }}
                                                         selected={selectedIndex === 1}

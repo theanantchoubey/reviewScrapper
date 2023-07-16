@@ -15,7 +15,7 @@ const heading = () => {
                 <Link
                     color="#fff"
                     sx={{ ':hover': { color: 'yellow' }, pr: 3 }}
-                    href="https://github.com/theanantchoubey/productScrapping"
+                    href="https://github.com/theanantchoubey/reviewScrapper"
                     target="_blank"
                 >
                     <GitHub />
