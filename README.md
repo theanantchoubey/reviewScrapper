@@ -1,4 +1,5 @@
 # Review Scrapper
+![Preview](site.png)
 
 ## Description
 Welcome to Review Scrapper! This is a reviews scrapper web application made by using MERN Stack framework.
